@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Newsroom Admin — Bombay Times Group</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --ink:#191919; --ink-2:#555; --rule:#e2ddd4; --paper:#fff; --paper-2:#f7f5f1; --accent:#9e1b32; --navy:#0a1f38; --ok:#1b7f3b; --warn:#b26b00; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 14px/1.45 Inter, -apple-system, "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--paper-2); }
+  header { background: var(--ink); color: #fff; display: flex; align-items: center; gap: 14px; padding: 10px 18px; position: sticky; top: 0; z-index: 5; }
+  header img { height: 26px; filter: invert(1); }
+  header .sp { flex: 1; }
+  header a, header button { color: #fff; font: inherit; font-weight: 600; background: none; border: 1px solid #555; padding: 6px 12px; cursor: pointer; text-decoration: none; }
+  header .live { background: var(--accent); border-color: var(--accent); }
+  .layout { display: grid; grid-template-columns: 300px 1fr 300px; gap: 0; min-height: calc(100vh - 50px); }
+  aside.list { border-right: 1px solid var(--rule); background: var(--paper); overflow-y: auto; max-height: calc(100vh - 50px); position: sticky; top: 50px; }
+  aside.list .top { padding: 12px; border-bottom: 1px solid var(--rule); display: grid; gap: 8px; }
+  aside.list input { width: 100%; padding: 8px; border: 1px solid var(--rule); }
+  .new { background: var(--accent); color: #fff; border: 0; padding: 9px; font-weight: 700; cursor: pointer; }
+  .item { padding: 10px 12px; border-bottom: 1px solid var(--rule); cursor: pointer; }
+  .item:hover, .item.on { background: var(--paper-2); }
+  .item b { display: block; font-size: 13px; line-height: 1.3; }
+  .item small { color: var(--ink-2); }
+  .badge { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; background: #eee; margin-left: 4px; }
+  .badge.d { background: #fde6c8; } .badge.s { background: #dbe8ff; }
+  main { padding: 20px 26px 80px; max-width: 900px; }
+  h1 { font: 800 22px Georgia, serif; margin-bottom: 14px; }
+  fieldset { border: 1px solid var(--rule); background: var(--paper); padding: 14px 16px 16px; margin-bottom: 16px; }
+  legend { font-weight: 800; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 0 6px; color: var(--accent); }
+  label { display: block; font-weight: 600; font-size: 12px; margin: 10px 0 4px; }
+  label .hint { font-weight: 400; color: var(--ink-2); }
+  input[type=text], input[type=url], input[type=datetime-local], input[type=number], select, textarea { width: 100%; padding: 9px 10px; border: 1px solid #cfc9be; font: inherit; background: #fff; }
+  textarea { resize: vertical; }
+  #body { min-height: 420px; font: 15px/1.6 Georgia, serif; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .checks { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+  .checks label { display: flex; gap: 6px; align-items: center; margin: 0; font-weight: 500; }
+  .count { float: right; font-weight: 600; }
+  .count.bad { color: var(--accent); } .count.good { color: var(--ok); }
+  .imgprev { margin-top: 10px; max-height: 220px; display: none; border: 1px solid var(--rule); }
+  .actions { position: fixed; bottom: 0; left: 300px; right: 300px; background: var(--paper); border-top: 1px solid var(--rule); padding: 10px 26px; display: flex; gap: 10px; align-items: center; }
+  .actions button { padding: 10px 16px; font-weight: 700; border: 1px solid var(--ink); background: #fff; cursor: pointer; }
+  .actions .primary { background: var(--ink); color: #fff; }
+  .actions .msg { flex: 1; font-size: 13px; color: var(--ink-2); white-space: pre-wrap; max-height: 60px; overflow: auto; }
+  aside.seo { border-left: 1px solid var(--rule); background: var(--paper); padding: 16px; position: sticky; top: 50px; max-height: calc(100vh - 50px); overflow-y: auto; }
+  aside.seo h2 { font: 800 15px Georgia, serif; margin-bottom: 10px; }
+  .chk { display: grid; grid-template-columns: 18px 1fr; gap: 6px; padding: 6px 0; border-bottom: 1px dashed var(--rule); font-size: 13px; }
+  .chk.ok::before { content: "✔"; color: var(--ok); } .chk.no::before { content: "✖"; color: var(--accent); } .chk.wa::before { content: "!"; color: var(--warn); font-weight: 800; text-align: center; }
+  .serp { margin-top: 16px; padding: 12px; border: 1px solid var(--rule); font-family: Arial, sans-serif; }
+  .serp .u { color: #188038; font-size: 12px; } .serp .t { color: #1a0dab; font-size: 18px; line-height: 1.3; margin: 2px 0; } .serp .d { color: #4d5156; font-size: 13px; }
+  .help { font-size: 12px; color: var(--ink-2); margin-top: 16px; line-height: 1.6; }
+  code { background: var(--paper-2); padding: 1px 4px; }
+  @media (max-width: 1200px) { .layout { grid-template-columns: 240px 1fr; } aside.seo { display: none; } .actions { left: 240px; right: 0; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="/brand/logo-wordmark.svg" alt="Bombay Times Group">
+  <strong>Newsroom</strong>
+  <span class="sp"></span>
+  <a href="/" target="_blank">View site ↗</a>
+  <button type="button" class="live" id="publish">Publish live ↑</button>
+</header>
+<div class="layout">
+  <aside class="list">
+    <div class="top">
+      <button class="new" id="new">+ New article</button>
+      <input id="filter" type="search" placeholder="Filter articles…">
+    </div>
+    <div id="items"></div>
+  </aside>
+  <main>
+    <h1 id="mode">New article</h1>
+    <form id="f" autocomplete="off">
+      <input type="hidden" name="file">
+      <input type="hidden" name="image">
+      <input type="hidden" name="prevUpdated">
+      <fieldset>
+        <legend>Headline</legend>
+        <label>Headline <span class="hint">(shown on the page — be specific: who, what, where)</span><span class="count" data-for="title"></span></label>
+        <input type="text" name="title" required maxlength="160">
+        <label>SEO title <span class="hint">(optional, for Google — ideally 50–60 characters incl. keyword)</span><span class="count" data-for="seoTitle"></span></label>
+        <input type="text" name="seoTitle" maxlength="80">
+        <label>Summary / standfirst <span class="hint">(meta description — 120–160 characters)</span><span class="count" data-for="description"></span></label>
+        <textarea name="description" rows="3" maxlength="300"></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Details</legend>
+        <div class="row3">
+          <div><label>Section</label><select name="category" required></select></div>
+          <div><label>Kicker <span class="hint">(e.g. Civic, Crime)</span></label><input type="text" name="kicker"></div>
+          <div><label>Dateline</label><input type="text" name="location" placeholder="Mumbai"></div>
+        </div>
+        <div class="row">
+          <div><label>Author / desk</label><select name="author"></select></div>
+          <div><label>Publish date &amp; time (IST) <span class="hint">future = scheduled</span></label><input type="datetime-local" name="date"></div>
+        </div>
+        <label>Tags <span class="hint">(comma-separated: BMC, Mumbai Local, Western Railway)</span></label>
+        <input type="text" name="tags">
+        <div class="checks">
+          <label><input type="checkbox" name="featured"> Lead story (homepage hero)</label>
+          <label><input type="checkbox" name="breaking"> Breaking (ticker)</label>
+          <label><input type="checkbox" name="updated"> Mark as updated now</label>
+          <label><input type="checkbox" name="draft"> Draft (not published)</label>
+          <label>Priority <input type="number" name="priority" min="0" max="10" style="width:60px"></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Main photo</legend>
+        <label>Upload <span class="hint">(JPG/PNG/WebP, landscape, at least 1200px wide)</span></label>
+        <input type="file" id="imgfile" accept="image/jpeg,image/png,image/webp">
+        <label>…or use an existing image</label>
+        <select id="imgpick"><option value="">— none —</option></select>
+        <img class="imgprev" id="imgprev" alt="">
+        <label>Alt text <span class="hint">(describe what the photo shows — important for Google Images)</span></label>
+        <input type="text" name="imageAlt">
+        <label>Caption</label>
+        <input type="text" name="imageCaption">
+        <div class="row3">
+          <div><label>Credit</label><input type="text" name="imageCredit" placeholder="Photographer / Agency"></div>
+          <div><label>Licence</label><input type="text" name="imageLicense" placeholder="e.g. CC BY-SA 4.0"></div>
+          <div><label>Source URL</label><input type="url" name="imageSource"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Story</legend>
+        <label>Body <span class="hint">(Markdown: blank line between paragraphs, <code>## Subheading</code>, <code>**bold**</code>, <code>- list</code>, <code>[link](https://…)</code>)</span><span class="count" data-for="body"></span></label>
+        <textarea name="body" id="body"></textarea>
+        <label>Sources <span class="hint">(one per line: <code>Name | https://link</code>)</span></label>
+        <textarea name="sources" rows="3"></textarea>
+        <label>Custom URL slug <span class="hint">(optional — leave blank to use the headline)</span></label>
+        <input type="text" name="slug">
+      </fieldset>
+    </form>
+  </main>
+  <aside class="seo">
+    <h2>SEO checklist</h2>
+    <div id="checks"></div>
+    <div class="serp"><div class="u" id="sU"></div><div class="t" id="sT"></div><div class="d" id="sD"></div></div>
+    <div class="help">
+      <b>Workflow</b><br>
+      1. Write &amp; <b>Save</b> — the site rebuilds instantly.<br>
+      2. Check it with <b>View</b>.<br>
+      3. <b>Publish live</b> pushes to GitHub; your host redeploys in about a minute, and Bing/IndexNow is pinged automatically.
+    </div>
+  </aside>
+</div>
+<div class="actions">
+  <button type="button" class="primary" id="save">Save &amp; rebuild</button>
+  <button type="button" id="view" disabled>View article ↗</button>
+  <div class="msg" id="msg"></div>
+</div>
+<script>
+(function () {
+  var f = document.getElementById('f'), meta = null, current = null, imageData = null;
+  var $ = function (id) { return document.getElementById(id); };
+  var msg = function (t) { $('msg').textContent = t; };
+  var el = function (n) { return f.elements[n]; };
+
+  function load() {
+    return fetch('/api/meta').then(function (r) { return r.json(); }).then(function (m) {
+      meta = m;
+      el('category').innerHTML = m.categories.map(function (c) { return '<option value="' + c.slug + '">' + c.name + '</option>'; }).join('');
+      el('author').innerHTML = m.authors.map(function (a) { return '<option value="' + a.slug + '">' + a.name + '</option>'; }).join('');
+      $('imgpick').innerHTML = '<option value="">— none —</option>' + m.images.map(function (i) { return '<option>' + i + '</option>'; }).join('');
+      renderList();
+      if (!current) blank();
+    });
+  }
+  function renderList() {
+    var q = $('filter').value.toLowerCase(), now = new Date();
+    $('items').innerHTML = meta.articles.filter(function (a) { return !q || (a.title || '').toLowerCase().indexOf(q) > -1; }).map(function (a) {
+      var d = a.date ? new Date(a.date) : null;
+      var badge = a.draft ? '<span class="badge d">DRAFT</span>' : (d && d > now ? '<span class="badge s">SCHEDULED</span>' : '');
+      return '<div class="item' + (current === a.file ? ' on' : '') + '" data-file="' + a.file + '"><b>' + (a.title || a.file) + badge + '</b><small>' + a.category + ' · ' + (d ? d.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) : '') + '</small></div>';
+    }).join('');
+  }
+  function blank() {
+    current = null; imageData = null; f.reset();
+    el('file').value = ''; el('image').value = ''; el('prevUpdated').value = '';
+    el('date').value = meta.now; $('imgprev').style.display = 'none'; $('imgpick').value = '';
+    $('mode').textContent = 'New article'; $('view').disabled = true; msg(''); renderList(); checks();
+  }
+  function open(file) {
+    fetch('/api/article?file=' + encodeURIComponent(file)).then(function (r) { return r.json(); }).then(function (a) {
+      blank(); current = file; var d = a.data;
+      el('file').value = file;
+      ['title', 'seoTitle', 'description', 'category', 'kicker', 'location', 'imageAlt', 'imageCaption', 'imageCredit', 'imageLicense', 'imageSource', 'slug', 'priority'].forEach(function (k) { if (d[k] != null) el(k).value = d[k]; });
+      el('author').value = [].concat(d.author || d.authors || [])[0] || '';
+      el('tags').value = (d.tags || []).join(', ');
+      el('featured').checked = !!d.featured; el('breaking').checked = !!d.breaking; el('draft').checked = !!d.draft;
+      el('prevUpdated').value = d.updated ? new Date(d.updated).toISOString() : '';
+      if (d.date) { var t = new Date(new Date(d.date).getTime() + 330 * 60000); el('date').value = t.toISOString().slice(0, 16); }
+      el('image').value = d.image || ''; $('imgpick').value = d.image || '';
+      el('body').value = a.body;
+      el('sources').value = (d.sources || []).map(function (s) { return typeof s === 'string' ? s : s.name + (s.url ? ' | ' + s.url : ''); }).join('\n');
+      $('mode').textContent = 'Edit article'; $('view').disabled = false;
+      showPreview(d.image ? '/images/' + d.image.replace(/\.[a-z0-9]+$/i, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') + '-400.webp' : null);
+      renderList(); checks();
+    });
+  }
+  function showPreview(src) {
+    var p = $('imgprev');
+    if (src) { p.src = src; p.style.display = 'block'; } else p.style.display = 'none';
+  }
+  $('imgfile').addEventListener('change', function () {
+    var file = this.files[0]; if (!file) return;
+    if (file.size > 20e6) { alert('Image is larger than 20 MB'); this.value = ''; return; }
+    var r = new FileReader();
+    r.onload = function () { imageData = r.result; showPreview(r.result); $('imgpick').value = ''; checks(); };
+    r.readAsDataURL(file);
+  });
+  $('imgpick').addEventListener('change', function () { imageData = null; el('image').value = this.value; $('imgfile').value = ''; showPreview(this.value ? '/images/' + this.value.replace(/\.[a-z0-9]+$/i, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') + '-400.webp' : null); checks(); });
+
+  function data() {
+    var o = {};
+    ['file', 'image', 'prevUpdated', 'title', 'seoTitle', 'description', 'category', 'kicker', 'location', 'author', 'date', 'tags', 'imageAlt', 'imageCaption', 'imageCredit', 'imageLicense', 'imageSource', 'body', 'sources', 'slug', 'priority'].forEach(function (k) { o[k] = el(k).value; });
+    ['featured', 'breaking', 'draft', 'updated'].forEach(function (k) { o[k] = el(k).checked; });
+    if (imageData) o.imageData = imageData;
+    return o;
+  }
+  var lastUrl = null;
+  $('save').addEventListener('click', function () {
+    if (!el('title').value.trim()) { alert('Please add a headline'); return; }
+    msg('Saving and rebuilding…');
+    fetch('/api/article', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data()) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res.ok) { msg('Error: ' + res.error); return; }
+        lastUrl = res.url; current = res.file; el('file').value = res.file; imageData = null; $('view').disabled = false;
+        msg('Saved ✓ ' + (res.draft ? '(draft — not on the site)' : res.scheduled ? '(scheduled — appears after its publish time on the next build)' : res.url) + '  ·  Click "Publish live" when ready.');
+        load();
+      })
+      .catch(function (e) { msg('Error: ' + e.message); });
+  });
+  $('view').addEventListener('click', function () {
+    var url = lastUrl;
+    if (!url && current) { var a = meta.articles.find(function (x) { return x.file === current; }); if (a) url = '/' + a.category + '/' + a.slug + '/'; }
+    if (url) window.open(url, '_blank');
+  });
+  $('publish').addEventListener('click', function () {
+    if (!confirm('Push all saved changes to the live website now?')) return;
+    msg('Publishing…');
+    fetch('/api/publish', { method: 'POST' }).then(function (r) { return r.json(); }).then(function (res) {
+      msg((res.ok ? 'Published ✓ The live site will update in about a minute.\n' : 'Not published:\n') + (res.out || ''));
+    });
+  });
+  $('new').addEventListener('click', blank);
+  $('filter').addEventListener('input', renderList);
+  $('items').addEventListener('click', function (e) { var it = e.target.closest('.item'); if (it) open(it.getAttribute('data-file')); });
+
+  // ---- Live SEO checks ----
+  function words(t) { return (t.match(/\S+/g) || []).length; }
+  function checks() {
+    var t = el('title').value.trim(), st = el('seoTitle').value.trim() || t, d = el('description').value.trim(), b = el('body').value;
+    var w = words(b), tags = el('tags').value.split(',').filter(function (x) { return x.trim(); });
+    var hasImg = !!(imageData || el('image').value);
+    var list = [
+      [t.length >= 30 && t.length <= 110, t.length ? 'Headline length ' + t.length + ' (30–110)' : 'Add a headline'],
+      [st.length >= 40 && st.length <= 65 ? 1 : (st.length ? 0.5 : 0), 'SEO title ' + st.length + ' chars (ideal 50–60)'],
+      [d.length >= 120 && d.length <= 160 ? 1 : (d.length ? 0.5 : 0), 'Summary ' + d.length + ' chars (ideal 120–160)'],
+      [hasImg, 'Main photo (needed for Google Discover & Top Stories)'],
+      [!hasImg || el('imageAlt').value.trim().length > 10, 'Photo alt text'],
+      [!hasImg || el('imageCredit').value.trim().length > 0, 'Photo credit'],
+      [w >= 300 ? 1 : (w >= 150 ? 0.5 : 0), w + ' words (aim for 300+)'],
+      [/^##\s/m.test(b) ? 1 : 0.5, 'Subheadings (## …) break up the story'],
+      [el('sources').value.trim() ? 1 : 0.5, 'Sources listed (E-E-A-T, trust)'],
+      [tags.length >= 2 && tags.length <= 8 ? 1 : 0.5, tags.length + ' tags (2–8)'],
+      [el('location').value.trim() ? 1 : 0.5, 'Dateline / location'],
+    ];
+    $('checks').innerHTML = list.map(function (c) { var s = c[0] === true || c[0] === 1 ? 'ok' : (c[0] === 0.5 ? 'wa' : 'no'); return '<div class="chk ' + s + '">' + c[1] + '</div>'; }).join('');
+    var cat = el('category').value || 'mumbai';
+    $('sU').textContent = 'bombaytimesgroup.com › ' + cat;
+    $('sT').textContent = (st || 'Your headline') + ' | Bombay Times Group';
+    $('sD').textContent = d || 'Your summary appears here in Google results.';
+    document.querySelectorAll('.count').forEach(function (c) {
+      var k = c.getAttribute('data-for'), v = el(k).value;
+      if (k === 'body') { c.textContent = words(v) + ' words'; return; }
+      var n = v.trim().length, lim = { title: [30, 110], seoTitle: [40, 65], description: [120, 160] }[k];
+      c.textContent = n; c.className = 'count ' + (n === 0 ? '' : (n >= lim[0] && n <= lim[1] ? 'good' : 'bad'));
+    });
+  }
+  f.addEventListener('input', checks);
+  document.addEventListener('keydown', function (e) { if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); $('save').click(); } });
+  load();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[
+  { "slug": "mumbai", "name": "Mumbai", "description": "Latest Mumbai news: BMC and civic affairs, local trains, Metro, roads, crime, courts, housing, weather and air quality across Mumbai, Navi Mumbai and Thane.", "nav": true },
+  { "slug": "india", "name": "India", "description": "National news from across India: politics, Supreme Court and courts, governance, policy, health and major developments in the states.", "nav": true },
+  { "slug": "world", "name": "World", "description": "International news, diplomacy, elections and global affairs with an Indian perspective.", "nav": true },
+  { "slug": "business", "name": "Business", "description": "Business and economy news: markets, company results, banking, insurance, gold prices, startups and personal finance.", "nav": true },
+  { "slug": "sports", "name": "Sports", "description": "Sports news: cricket, hockey, football, tennis, badminton and Indian athletes at home and abroad.", "nav": true },
+  { "slug": "entertainment", "name": "Entertainment", "description": "Bollywood and entertainment news: box office, films, OTT, music and celebrity updates from Mumbai's film industry.", "nav": true },
+  { "slug": "education", "name": "Education", "description": "Education news: exams, results, admit cards, admissions, schools and universities.", "nav": true },
+  { "slug": "tech", "name": "Tech", "description": "Technology news: gadgets, apps, AI, telecom, cyber security and startups.", "nav": true },
+  { "slug": "lifestyle", "name": "Lifestyle", "description": "Lifestyle news: health, food, travel, festivals and culture in Mumbai and beyond.", "nav": true },
+  { "slug": "opinion", "name": "Opinion", "description": "Opinion, editorials, columns and analysis from Bombay Times Group writers and guest contributors.", "nav": true }
+]

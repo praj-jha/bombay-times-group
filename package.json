@@ -1,0 +1,22 @@
+{
+  "name": "bombay-times-group",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bombay Times Group — Mumbai & India news website (static, SEO-first).",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.js",
+    "admin": "node scripts/admin-server.js",
+    "new": "node scripts/new-article.js",
+    "serve": "node scripts/admin-server.js --preview-only",
+    "indexnow": "node scripts/indexnow.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^14.1.4",
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Bombay Times Group",
+  "shortName": "BTG",
+  "url": "https://bombaytimesgroup.com",
+  "tagline": "Mumbai's News, First",
+  "description": "Bombay Times Group brings you the latest Mumbai news, Maharashtra and India headlines, business, sports, entertainment and world news — reported, verified and updated through the day.",
+  "edition": "Mumbai Edition",
+  "language": "en-IN",
+  "locale": "en_IN",
+  "timezone": "Asia/Kolkata",
+  "foundingDate": "2026-11-06",
+  "email": "editor@bombaytimesgroup.com",
+  "grievanceEmail": "grievance@bombaytimesgroup.com",
+  "adsEmail": "ads@bombaytimesgroup.com",
+  "phone": "",
+  "address": {
+    "streetAddress": "",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "",
+    "addressCountry": "IN"
+  },
+  "grievanceOfficer": "Grievance Officer, Bombay Times Group",
+  "social": {
+    "x": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "linkedin": "",
+    "whatsappChannel": ""
+  },
+  "twitterHandle": "",
+  "newsletterAction": "",
+  "googleSiteVerification": "",
+  "bingSiteVerification": "",
+  "googleAnalyticsId": "",
+  "adsenseClient": "",
+  "indexNowKey": "801479199698411954e21b6526251fbd",
+  "articlesPerPage": 18,
+  "newsSitemapHours": 48,
+  "autoGitPush": false
+}

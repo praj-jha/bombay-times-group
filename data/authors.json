@@ -1,0 +1,9 @@
+[
+  { "slug": "mumbai-bureau", "name": "BTG Mumbai Bureau", "type": "Organization", "role": "City desk", "bio": "The Bombay Times Group Mumbai Bureau covers civic affairs, transport, housing, crime, courts and the environment across Mumbai, Navi Mumbai and Thane.", "image": "", "sameAs": [] },
+  { "slug": "national-desk", "name": "BTG National Desk", "type": "Organization", "role": "National desk", "bio": "The National Desk tracks politics, the courts, governance and major developments across India's states.", "image": "", "sameAs": [] },
+  { "slug": "business-desk", "name": "BTG Business Desk", "type": "Organization", "role": "Business desk", "bio": "The Business Desk covers markets, company earnings, banking and insurance, commodities and personal finance, with a focus on Mumbai as India's financial capital.", "image": "", "sameAs": [] },
+  { "slug": "sports-desk", "name": "BTG Sports Desk", "type": "Organization", "role": "Sports desk", "bio": "The Sports Desk covers cricket, hockey, football, tennis and Indian athletes in domestic and international competition.", "image": "", "sameAs": [] },
+  { "slug": "world-desk", "name": "BTG World Desk", "type": "Organization", "role": "World desk", "bio": "The World Desk reports on international affairs, diplomacy and elections, and what they mean for India.", "image": "", "sameAs": [] },
+  { "slug": "entertainment-desk", "name": "BTG Entertainment Desk", "type": "Organization", "role": "Entertainment desk", "bio": "The Entertainment Desk covers Hindi cinema, box office, streaming, music and the people who make Mumbai's film industry.", "image": "", "sameAs": [] },
+  { "slug": "education-desk", "name": "BTG Education Desk", "type": "Organization", "role": "Education desk", "bio": "The Education Desk covers entrance exams, results, admissions and policy for students and parents.", "image": "", "sameAs": [] }
+]
